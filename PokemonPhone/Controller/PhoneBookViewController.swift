@@ -39,6 +39,7 @@ class PhoneBookViewController: UIViewController {
         textField.layer.borderWidth = 1
         textField.layer.borderColor = UIColor.gray.cgColor
         textField.layer.cornerRadius = 8
+        textField.placeholder = " 이름을 입력하세요"
         return textField
     }()
     private let phoneNumberTextField: UITextField = {
@@ -46,6 +47,7 @@ class PhoneBookViewController: UIViewController {
         textField.layer.borderWidth = 1
         textField.layer.borderColor = UIColor.gray.cgColor
         textField.layer.cornerRadius = 8
+        textField.placeholder = " 전화번호를 입력하세요"
         return textField
     }()
     
@@ -160,6 +162,7 @@ class PhoneBookViewController: UIViewController {
         newPhoneBook.setValue(name, forKey: "name")
         newPhoneBook.setValue(phoneNumber, forKey: "phoneNumber")
         newPhoneBook.setValue(imageString, forKey: "image")
+        
         
         do {
             try container.viewContext.save()

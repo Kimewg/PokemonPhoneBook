@@ -41,9 +41,14 @@ class ViewController: UIViewController {
     }
     // Core Data에서 연락처 데이터를 읽고 테이블 뷰를 갱신하는 메서드
     func readAllData() {
+        // 이름순으로 테이블뷰 정리
+        let request = NSFetchRequest<PhoneBook>(entityName: "PhoneBook")
+        let sortDescriptor = NSSortDescriptor(key: "name", ascending: true)
+        request.sortDescriptors = [sortDescriptor]
+        
         do {
             // Core Data에서 PhoneBook 엔티티를 가져옴
-            let phoneBooks = try self.container.viewContext.fetch(PhoneBook.fetchRequest())
+            let phoneBooks = try self.container.viewContext.fetch(request)
             self.tableData = phoneBooks // 읽은 데이터를 tableData에 저장
             self.tableView.reloadData() // 테이블 뷰 갱신
         } catch {
